@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-if="true">
+            <h1>板块一</h1>
+            <p>vue从基础到实例</p>
+            <b>monster-hash</b>
+        </template>
+
+        <template v-else>
+            <h1>板块二</h1>
+            <p>vue从基础到实例</p>
+            <b>monster-hash</b>
+        </template>
+        <hr>
+
+        <h2>板块三</h2>
+        <ul>
+            <li v-for="(i,j) in arr">{{i}} : {{j}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(item,key) in obj">{{key}}</li>
+        </ul>
+
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            title: "训练1.6",
+            num: 123,
+            bool: false,
+            arr: [111,222,333,444,555],
+            obj: {name:"monster",age: 22,sex:"男"}
+        }
+    })
+
+</script>

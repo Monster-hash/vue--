@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0; outline: none; box-sizing: border-box;}
+
+        .out{ width: 550px; min-height: 200px; margin: 100px auto; border:1px solid #eee; border-radius:5px; box-shadow:0 0 20px rgba(0, 0, 0, 0.1);padding: 30px;} 
+
+        .search{display: flex; padding-bottom: 30px;}
+
+        .search .ipt{ height: 36px;border: none; background: #eee; border-radius: 3px; padding: 0 10px; font-size: 16px; color: #666; width: 80%; letter-spacing: 0.1em;}
+
+        .search .btn{ height: 36px; width: 20%; border: none; background: #4fc08d; color: #fff; font-size: 16px; cursor: pointer;}
+
+        .out .row{border-bottom: 1px solid #eee; border-top: 1px solid #eee; height: 40px ; display: flex; align-items: center; font-size: 16px; justify-content: space-between; margin-top: -1px; color: #333;}
+
+        .out .row .close{font-size: 22px; font-family: "宋体" ; color:#ff976a; display: none; cursor: pointer;}
+        .out .row:hover .close{display: block;}
+        .out .num{padding-top: 20px; color: #555; text-align: center;}
+        .out .num b{display: inline-block; padding: 0 3px;}
+        .out .comment{font-size: 16px; color: #999; text-align: center;}
+    </style>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="out">
+            <div class="search">
+                <input type="text" class="ipt" v-model = "iptVal" @keyup.enter="pushData">
+                <input type="button" class="btn" value="评论" @click="pushData">
+            </div>
+            <div class="row"  v-for="(item,key) in arrs">
+                {{item}}
+                <div class="close" @click="btnClose(key)">✕</div>
+            </div>
+            
+            <div class="num" v-if="arrs.length">共<b>{{arrs.length}}</b>条评论</div>
+            <div class="comment" v-else >暂无评论</div>
+        </div>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            arrs:["评论11111","Hello World","评论模块案例"],
+            iptVal:"",
+        },
+        methods: {
+            //向前追加数据
+            pushData(){
+                this.arrs.unshift(this.iptVal);
+                this.iptVal=""
+                /*
+                流程：在input text中v-model双向绑定
+                在data中创建iptVal
+                在button中设置@click点击事件
+                在methods中设置pushData()
+                */
+            },
+            //删除点击事件
+            btnClose(key){
+                this.arrs.splice(key,1)
+                //splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目
+                //arrayObject.splice(index,howmany,item1,.....,itemX)
+                //index	必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。
+                //howmany	必需。要删除的项目数量。如果设置为 0，则不会删除项目。
+                //item1, ..., itemX	可选。向数组添加的新项目。
+            },
+        },
+    })
+</script>
+</html>

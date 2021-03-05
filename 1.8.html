@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <h1 v-text="title"></h1>
+        <hr>
+        <h2>{{job}}</h2>
+        <h2 v-text="job"></h2>
+        <hr>
+        <h2 v-html="job"></h2>
+        <hr>
+        <h3 title="vue训练" v-bind:title="des">创新谷</h3>
+        <a v-bind:href="link">个人网站</a>
+        <hr>
+        <img src="images/tx.jpg" alt="" width="200" height="200">
+        <hr>
+        <img v-bind:src="piclink" alt="" width="200" height="200">
+
+    </div>
+    
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            title:"1.8vue训练",
+            job: "web <em style='color:red'>前端</em> 开发",
+            des: "东方大饭店收到凤凰网IE噢回复",
+            link: "http://monster-hash.cn",
+            piclink: "images/tx.jpg",
+
+        }
+    })
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="val">
+        <h1>{{val}}</h1>
+        <hr>
+        <textarea v-model="text"></textarea>
+        <h1>{{text}}</h1>
+        <hr>
+        <input type="checkbox" v-model="checked" id="myChecked">
+        <label for="myChecked">是否同意用户协议</label>
+        <h1>{{checked}}</h1>
+        <hr>
+        <label >
+            <input type="checkbox" v-model="checked">是否同意用户协议
+        </label>
+        <div 
+        v-show="checked" 
+        style="width: 120px;height: 30px;
+        background: pink; 
+        text-align: center; 
+        line-height: 30px; 
+        color: #fff;">下一步</div>
+        <hr>
+        爱好：
+        <label><input type="checkbox" value="singing" v-model="checkArr">唱歌</label>
+        <label><input type="checkbox" value="dancing" v-model="checkArr">跳舞</label>
+        <label><input type="checkbox" value="rap" v-model="checkArr">RAP</label>
+        <label><input type="checkbox" value="basketball" v-model="checkArr">打篮球</label>
+        <h1>{{checkArr}}</h1>
+        <hr>
+        <select v-model="selected">
+            <option value="1">heighschool</option>
+            <option value="2">nadleschool</option>
+            <option value="3">university</option>
+            <option value="4">college</option>
+        </select>
+        <h1>{{selected}}</h1>
+
+        <hr>
+        <input type="text" v-model.trim="name" @input="myIpt">
+        <h1>{{name}}</h1>
+    </div>
+    
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data: {
+            val:"",
+            text:"",
+            checked:false,
+            checkArr:[],
+            selected:"",
+            name:"",
+        },
+        methods: {
+            myIpt(){
+                console.log(this.name);
+            }
+
+        }
+    })
+</script>

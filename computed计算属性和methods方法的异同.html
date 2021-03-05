@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed计算属性和methods方法的异同</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title+"~~"+des}}</h1> 
+        <br>
+        <h1>{{titleDes}}</h1> <!-- 把运算放入逻辑中，页面不进行计算 -->
+        <br>
+        <h1>{{tit2()}}</h1>
+
+    </div>
+    
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            title:"Vue基础",
+            des:"computed计算属性和methods方法的异同"
+            
+
+        },
+        methods: { //每次变化会进行重新加载函数
+            tit2(){
+                return this.title+"==="+this.des
+            }
+
+        },
+        computed: { //计算属性computed要有return
+            titleDes(){
+                return this.title+"++"+this.des
+            }
+            
+        }
+    })
+</script>
+</html>

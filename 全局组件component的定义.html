@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全局组件component的定义</title>
+    <style>
+        * { padding: 0; margin: 0;}
+        body{ background: #f4f4f4;}
+        .box {width: 200px; border: 1px solid #ccc; padding: 5px; background: #fff; margin: 10px;}
+        .box img { width: 100%;}
+        .box h2 { font-size: 18px; font-weight: 400;}
+        .box .price { font-size: 28px; color: #c00; font-weight: 600;}
+    </style>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <itembox></itembox>
+        <div class="box">
+            <img src="images/pd.jpeg" alt="">
+            <h2>皮带</h2>
+            <div class="price">￥ 99.9</div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    Vue.component("itembox",{
+        template:`
+            <div class="box">
+                <img src="images/pd.jpeg" alt="">
+                <h2>皮带</h2>
+                <div class="price">￥ 99.9</div>
+            </div>
+        `
+    })
+    new Vue({
+        el: "#app",
+        data: {
+
+        }
+    })
+</script>
+</html>

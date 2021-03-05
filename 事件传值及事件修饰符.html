@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 @click="clickH1(123,$event)">A</h1>
+        <h1 @click="clickH1(456,$event)">B</h1>
+        <button @click.once="clickBtn">按钮</button>
+        <hr>
+        <div class="out" @click="clickOut" style="width: 300px;height: 300px; background: pink">
+            <div class="box" @click.stop="clickBox" style="width: 100px;height: 100px;background: orange;">
+                <!-- .stop解决冒泡问题 -->
+                box
+            </div>
+        </div>
+        <form @submit.prevent="onSubmit"> 
+        <input type="text" v-model="username" @input="myIpt" >
+        <input type="submit" :disabled="isShow" >
+        <h1>{{isShow}} - {{username.length}}</h1>
+        </form>
+    </div>
+    
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data: {
+            username:"",
+            isShow:true,
+        },
+        methods: {
+            clickH1(e,event){
+                console.log(e);
+                console.log(event);
+            },
+            clickBtn(){
+                alert(123);
+            },
+            clickOut(){
+                console.log("Out事件");
+            },
+            clickBox(){
+                console.log("Box事件");
+            },
+            onSubmit(){
+                if(this.username.length>2){
+                    location.href="http://monster-hash.cn"
+                }
+            },
+            myIpt(){
+                if(this.username.length>2){
+                    this.isShow=false
+                }else{
+                    this.isShow=true
+                    
+                }
+            },
+        }
+    })
+</script>

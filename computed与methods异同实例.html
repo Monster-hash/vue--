@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed与methods</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>单价：{{price}}</div>
+        <input type="text" v-model="num">
+        <h1>computed总价：{{nxp}}</h1>
+        <h2>computed总价：{{nxp}}</h2>
+        <h3>computed总价：{{nxp}}</h3>
+        <br>
+        <h1>methods总价：{{zongNum()}}</h1>
+        <h2>methods总价：{{zongNum()}}</h2>
+        <h3>methods总价：{{zongNum()}}</h3>
+        <br>
+        <h1>{{dataDemo("传参：")}}</h1>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            num:1,
+            price:99,
+        },
+        methods: {
+            zongNum(){
+                console.log("methods的函数被调用了");
+                return this.num*this.price;
+            }
+        },
+        computed: {
+            dataDemo(){
+                return function(e){
+                    return e+"computed传参"
+                } 
+            },
+            nxp(){
+                console.log("computed的函数被调用了");
+                return this.num*this.price;
+            }
+        }
+    })
+</script>
+</html>

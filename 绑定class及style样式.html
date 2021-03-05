@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.15</title>
+    <style>
+        li{ background:#ccc; padding: 10px; margin-top: 10px;}
+        li.active{background: rgb(14, 63, 109);}
+        li.box{font-size: 20px;}
+        li.my-active{ font-style: italic}
+    </style>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id = "app">
+        <li class="box" :class="{active:isActive,'my-active':on}">111</li>
+        <li :class="classObj">222</li>
+        <li>333</li>
+
+    </div>
+    
+</body>
+</html>
+<script> 
+    new Vue({
+        el:"#app",
+        data:{
+            isActive:true,
+            on:true,
+            classObj:{
+            active:true,
+            'my-active':true
+            }
+        },
+        
+    })
+</script>

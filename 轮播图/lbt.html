@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .out{
+            width: 960px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            position: relative;
+            user-select: none;
+        }
+        .out .btn{
+            position: absolute;
+            width: 30px;
+            height: 60px;
+            background-color: rgba(0,0,0,0.3);
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            line-height: 60px;
+            font-family: "宋体";
+            top: calc(50% - 30px);
+            cursor: pointer;
+            transition: background 0.5s;
+        }
+        .out .btn:hover{
+            background: rgba(0,0,0,0.6);
+        }
+        .out .btnLeft{
+            left: 0;
+        }
+        .out .btnRight{
+            right: 0;
+        }
+        .out .pic{
+            width: 960px;
+            height: 300px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="out">
+            <div class="btn btnLeft" @click="clickLeft" v-show="num>0">&lt;</div>
+            <img :src="picArr[num]" alt="" class="pic">
+            <div class="btn btnRight" @click="clickRight" v-show="num<this.picArr.length-1">&gt;</div>
+        </div>
+        <h1>{{num}}</h1>
+        
+    </div>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                num:0,
+                picArr:[
+                "images/pic1.jpg",
+                "images/pic2.jpg",
+                "images/pic3.jpg",
+                "images/pic4.jpg",
+                "images/pic5.jpg"
+                ]
+    
+            },
+            methods: {
+                clickLeft:function(){
+                    this.num--
+                    // if(this.num<0){
+                    //     this.num=this.picArr.length-1
+                    // }
+                },
+                clickRight:function(){
+                    this.num++
+                    // if(this.num>this.picArr.length-1){
+                    //     this.num=0
+                    // }
+                }
+                
+            }
+        })
+    </script>
+    
+</body>
+</html>

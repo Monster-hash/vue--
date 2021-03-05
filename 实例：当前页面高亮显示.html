@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面高亮</title>
+    <style>
+        .box{width: 300px; height: 30px; background: #ccc; margin-bottom: 15px;}
+        .box.active{ background: orange; }
+    </style>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <div class="box" :class="{active: num==key ? true:false}" v-for="(item,key
+    ) in listArr" @click="clickBox(key)">
+        {{item}}
+        </div>
+
+        <h1>{{num}}</h1>
+
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data: {
+            listArr:[
+                "First",
+                "Second",
+                "Third",
+                "Fourth",
+            ],
+            num:-1,
+
+        },
+        methods: {
+            clickBox(e){
+                this.num=e
+
+            }
+        }
+    })
+</script>
